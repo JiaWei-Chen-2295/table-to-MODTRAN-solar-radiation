@@ -3,13 +3,20 @@
 该项目旨在通过自动化的方式利用MODTRAN模型计算特定条件下（如大气条件、地理位置等）的太阳辐射值。具体来说，用户需要准备一个包含必要参数的Excel表格，然后通过一系列脚本自动完成数据处理、模型调用以及结果输出。
 
 ## 项目环境准备
+
 1. 使用如下命令拉取项目到本地。
+   
    ```bash
    git clone https://github.com/JiaWei-Chen-2295/table-to-MODTRAN-solar-radiation.git
    ```
+   
 2. 将数据按照 `data.xlsx` 的表格标题写好参数，务必将名字修改为 `data.xlsx` 。
+
 3. 运行 `setup.bat` 脚本。 这个脚本将帮助你安装运行环境和计算结果。
-4. 当 `setup.bat` 脚本提示 `把所有数字文件夹下的bat脚本启动吧` 时，对于每一个创建的文件夹（如 `1/`, `2/`, ...），手动进入该文件夹并运行其中的 `RunRunRunRunRunRunRunRun.bat` 批处理文件。
+
+4. 当 `setup.bat` 脚本提示 `把所有数字文件夹下的bat脚本启动吧` 时，就会创建好文件夹（如 `1/`, `2/`, ...）。
+  
+5. 手动进入这些文件夹并运行其中的 `RunRunRunRunRunRunRunRun.bat` 批处理文件。
 
 ### 查看结果
   - 每个文件夹下将会生成一个 Excel 表格（如 `1_1.xlsx`, `2_2.xlsx`, ...），其中包含了对应案例的计算结果。
