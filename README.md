@@ -5,8 +5,9 @@
 ## 项目环境准备
 
 1. 将你的命令行使用 `cd` 命令定位到 `Mod5.2.1.0.exe` 同级目录下。
+  
   ```bash 
-  cd path/to/Modtran5
+    cd path/to/Modtran5
   ```
 2. 使用如下命令拉取项目到本地。
    
