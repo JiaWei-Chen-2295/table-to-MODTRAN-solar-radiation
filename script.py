@@ -100,17 +100,17 @@ def getTape5(sun_anl, date, factors, Elevation):
     with open('tape5.templatetxt', 'r') as template:
         templates = template.readlines()
 
-        temp1 = templates[56]
-        templates[56] = temp1.replace('DDD', str(dayOfYear), 1)
+        temp1 = templates[59]
+        templates[59] = temp1.replace('DDD', str(dayOfYear), 1)
 
-        temp2 = templates[57]
-        templates[57] = temp2.replace('99.999', sun_anl, 1)
+        temp2 = templates[60]
+        templates[60] = temp2.replace('99.999', format_number(float(sun_anl), 4), 1)
 
         elevation = format_number(Elevation)
-        temp3 = templates[55]
-        templates[55] = temp3.replace('XXXXXXXXX', elevation, 1)
+        temp3 = templates[58]
+        templates[58] = temp3.replace('XXXXXXXXX', elevation, 1)
 
-        for i in range(1, 18):
+        for i in range(1, 5):
             row = tape5Rule(i)
             # Co2
             temp = templates[row]
@@ -210,7 +210,7 @@ def getRes(lon, lat, factors, ele):
 
 def readXlsx():
     # 加载Excel文件
-    df = pd.read_excel('数据(无高度、气压、温度版).xlsx')
+    df = pd.read_excel('数据(无高度、气压、温度版).xlsxbak')
     factors_guide = ['pbl_co2_Layer（ppmv）', 'o3（mg/m3）', 'co（mg/m3）', 'so2（mg/m3）', 'no2（mg/m3）']
     # 初始化数组来存储提取的数据
     data_arrays = {factor: [] for factor in factors_guide}
@@ -274,6 +274,7 @@ if __name__ == '__main__':
         date_str = datetime.datetime.now(pytz.timezone('Asia/Shanghai')).strftime('%Y%m%d')
         result = calculate.getArea(f"result/{date_str}/" + f"{lon}_{lat}_2020_07_01")
         results.append(result)
+        print(result)
 
     df = pd.read_excel(file_path, engine='openpyxl')
     wb = load_workbook(filename=file_path)

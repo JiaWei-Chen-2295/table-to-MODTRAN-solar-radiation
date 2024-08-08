@@ -32,35 +32,31 @@ def extract_columns(file_path, start_line=922):
     return np.array(second_column_data), np.array(third_last_column_data)
 
 def calculate_area(x, y):
-    # 对 x 进行排序并获取排序索引
-    sorted_indices_x = np.argsort(x)
-    sorted_x = x[sorted_indices_x]
-    sorted_y = y[sorted_indices_x]
+    """
+    计算给定浮点数 x 和 y 数据拟合曲线与 x 轴围成的面积，并可视化曲线
 
-    # 找到 x 严格递增的索引
-    increasing_indices_x = np.where(np.diff(sorted_x) > 0)[0]
+    参数:
+    x (list 或 numpy.ndarray): x 轴数据（浮点数）
+    y (list 或 numpy.ndarray): y 轴数据（浮点数）
 
-    # 根据递增的 x 索引筛选 y
-    increasing_y = sorted_y[increasing_indices_x]
+    返回:
+    float: 曲线与 x 轴围成的面积
+    """
+    x = np.array(x)
+    y = np.array(y)
 
-    # 找到筛选后的 y 严格递增的索引
-    increasing_indices_y = np.where(np.diff(increasing_y) > 0)[0]
+    # 对数据进行插值拟合
+    f = interp1d(x, y, kind='linear')  # 这里选择线性插值，您可以根据需要选择其他插值方法
 
-    # 最终的严格递增的 x 和 y
-    final_x = sorted_x[increasing_indices_x][increasing_indices_y]
-    final_y = increasing_y[increasing_indices_y]
+    # 定义积分函数
+    def integrand(x):
+        return f(x)
 
-    # 创建样条插值函数
-    spline = UnivariateSpline(final_x, final_y, s=0)
+    # 计算积分，增加细分次数限制
+    result, error = quad(integrand, np.min(x), np.max(x), limit=25000)
 
-    # 计算积分区间
-    x_min = np.min(final_x)
-    x_max = np.max(final_x)
+    return result
 
-    # 计算曲线与 x 轴围成的面积
-    area = spline.integral(x_min, x_max)
-
-    return area
 def save_data(path):
     x2= np.array(range(6, 20))
     y2= []
