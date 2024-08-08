@@ -10,7 +10,7 @@
    git clone https://github.com/JiaWei-Chen-2295/table-to-MODTRAN-solar-radiation.git
    ```
    
-2. 将数据按照 `data.xlsx` 的表格标题写好参数，务必将名字修改为 `data.xlsx` 。
+2. 将数据按照 `数据.xlsx` 的表格标题写好参数，务必将名字修改为 `数据.xlsx` 。
 
 3. 运行 `setup.bat` 脚本。 这个脚本将帮助你安装运行环境和计算结果。
 
@@ -39,7 +39,7 @@ project_directory/
 ```
 
 ### 文件说明
-- **data.xlsx**: 包含了用于计算太阳辐射值的所有必要参数的Excel表格。
+- **数据.xlsx**: 包含了用于计算太阳辐射值的所有必要参数的Excel表格。
 - **setup.py**: 配置文件，用于设置运行参数，如`run_num`，即需要运行的案例数量。
 - **setup.bat**: 执行脚本，用于初始化项目和创建必要的文件夹。
 - **1/, 2/, ...**: 每个文件夹对应一个具体的案例，里面包含了用于调用MODTRAN模型的批处理文件以及最终的输出文件。
