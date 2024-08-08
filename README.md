@@ -57,8 +57,8 @@ project_directory/
   - 张宪哲老师 
   - 张波学长
 - **主要开发者**:
-  - 陈佳玮 ([JavierChen]([https://github.com/JiaWei-Chen-2295]))
-  - 董晨泉 ([ChenQuanDong]([https://github.com/DCQ200849]))
+  - 陈佳玮 ([JavierChen](https://github.com/JiaWei-Chen-2295))
+  - 董晨泉 ([ChenQuanDong](https://github.com/DCQ200849))
 
 - **贡献者**:
 - **感谢**:
