@@ -51,3 +51,14 @@ project_directory/
 ### 注意事项
 - **环境要求**: 该项目已经包含了所有必要的 Python 环境配置，因此不需要用户自行安装 Python 环境或依赖库。
 - **IDE使用**: 不建议在 IDE（如 PyCharm）中直接运行该项目，因为它是基于批处理脚本设计的，更适合在命令行环境中运行。
+
+## 贡献者
+- **指导者**:
+  - 张宪哲老师 
+  - 张波学长
+- **主要开发者**:
+  - 陈佳玮 ([JavierChen]([https://github.com/JiaWei-Chen-2295])
+  - 董晨泉 ([ChenQuanDong]([https://github.com/DCQ200849])
+
+- **贡献者**:
+- **感谢**:
