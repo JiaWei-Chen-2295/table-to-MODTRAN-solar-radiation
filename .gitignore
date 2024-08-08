@@ -4,4 +4,5 @@
 /Novam
 /Profile
 /.idea
+.venv/
 *.exe
