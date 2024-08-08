@@ -4,19 +4,16 @@
 
 ## 项目环境准备
 
-1. 使用如下命令拉取项目到本地。
+1. 将你的命令行使用 `cd` 命令定位到 `Mod5.2.1.0.exe` 同级目录下。```bash cd path/to/Modtran5```
+2. 使用如下命令拉取项目到本地。
    
    ```bash
    git clone https://github.com/JiaWei-Chen-2295/table-to-MODTRAN-solar-radiation.git
-   ```
-   
-2. 将数据按照 `数据.xlsx` 的表格标题写好参数，务必将名字修改为 `数据.xlsx` 。
-
-3. 运行 `setup.bat` 脚本。 这个脚本将帮助你安装运行环境和计算结果。
-
-4. 当 `setup.bat` 脚本提示 `把所有数字文件夹下的bat脚本启动吧` 时，就会创建好文件夹（如 `1/`, `2/`, ...）。
-  
-5. 手动进入这些文件夹并运行其中的 `RunRunRunRunRunRunRunRun.bat` 批处理文件。
+   ```  
+3. 将数据按照 `数据.xlsx` 的表格标题写好参数，务必将名字修改为 `数据.xlsx` 。
+4. 运行 `setup.bat` 脚本。 这个脚本将帮助你安装运行环境和计算结果。
+5. 当 `setup.bat` 脚本提示 `把所有数字文件夹下的bat脚本启动吧` 时，就会创建好文件夹（如 `1/`, `2/`, ...）。
+6. 手动进入这些文件夹并运行其中的 `RunRunRunRunRunRunRunRun.bat` 批处理文件。
 
 ### 查看结果
   - 每个文件夹下将会生成一个 Excel 表格（如 `1_1.xlsx`, `2_2.xlsx`, ...），其中包含了对应案例的计算结果。
