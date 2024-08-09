@@ -100,18 +100,20 @@ def getTape5(sun_anl, date, factors, Elevation):
     with open('tape5.templatetxt', 'r') as template:
         templates = template.readlines()
 
-        temp1 = templates[59]
-        templates[59] = temp1.replace('DDD', str(dayOfYear), 1)
+        temp1 = templates[56]
+        templates[56] = temp1.replace('DDD', str(dayOfYear), 1)
 
-        temp2 = templates[60]
-        templates[60] = temp2.replace('99.999', format_number(float(sun_anl), 4), 1)
+        temp2 = templates[57]
+        templates[57] = temp2.replace('99.999', sun_anl, 1)
 
         elevation = format_number(Elevation)
-        temp3 = templates[58]
-        templates[58] = temp3.replace('XXXXXXXXX', elevation, 1)
+        temp3 = templates[55]
+        templates[55] = temp3.replace('XXXXXXXXX', elevation, 1)
 
-        for i in range(1, 5):
+        for i in range(1, 18):
             row = tape5Rule(i)
+            if i >= 5:
+                factors = [0, 0, 0, 0, 0]
             # Co2
             temp = templates[row]
             co2 = getScienceCounts(factors[0])
