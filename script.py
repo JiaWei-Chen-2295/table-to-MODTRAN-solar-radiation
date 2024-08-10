@@ -280,6 +280,11 @@ if __name__ == '__main__':
         results.append(result)
         print(result)
 
+    with open(f"{res_path}_result.txt", 'w') as file_res:
+        for re in results:
+            file_res.write(str(re))
+            file_res.write('\n')
+
     df = pd.read_excel(file_path, engine='openpyxl')
     wb = load_workbook(filename=file_path)
     ws = wb.active

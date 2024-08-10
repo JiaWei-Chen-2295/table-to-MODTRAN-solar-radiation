@@ -4,7 +4,7 @@ python -m venv .venv
 
 call .venv\Scripts\activate
 
-pip install -r requirements.txt
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements.txt
 
 echo Virtual environment created and dependencies installed.
 
