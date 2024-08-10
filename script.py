@@ -100,15 +100,16 @@ def getTape5(sun_anl, date, factors, Elevation):
     with open('tape5.templatetxt', 'r') as template:
         templates = template.readlines()
 
-        temp1 = templates[56]
-        templates[56] = temp1.replace('DDD', str(dayOfYear), 1)
+        temp1 = templates[55]
+        templates[55] = temp1.replace('DDD', str(dayOfYear), 1)
 
-        temp2 = templates[57]
-        templates[57] = temp2.replace('99.999', sun_anl, 1)
+        sun_anl = format_number(float(sun_anl), 3)
+        temp2 = templates[55]
+        templates[55] = temp2.replace('99.999', sun_anl, 1)
 
-        elevation = format_number(Elevation)
+        elevation = format_number(Elevation, 3)
         temp3 = templates[55]
-        templates[55] = temp3.replace('XXXXXXXXX', elevation, 1)
+        templates[55] = temp3.replace('XXXXX', elevation, 1)
 
         for i in range(1, 18):
             row = tape5Rule(i)
@@ -138,7 +139,7 @@ def getTape5(sun_anl, date, factors, Elevation):
         with open('tape5', 'w') as result:
             result.writelines(templates)
         # print('我要睡了')
-        # time.sleep(60 * 60 * 60)
+        # time.sleep(60 * 60)
 
 def geneResult(v1, v2, v3):
     now = datetime.datetime.now()
@@ -199,16 +200,17 @@ def getRes(lon, lat, factors, ele):
     zenith_angles = calculate_solar_zenith(lon, lat, date)
     for hour in range(0, 24):
         sun_anl = str(zenith_angles[hour])
-        getTape5(sun_anl, date, factors, ele)
-        result = subprocess.run('Mod5.2.1.0.exe tap5', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        # 检查命令是否成功执行
-        if result.returncode == 0:
-            print("命令成功执行")
-        else:
-            print(f"命令执行失败，返回码：{result.returncode}")
-            exit(result.returncode)
-        date_str = date.strftime('%Y_%m_%d') + "_" +str(hour)
-        geneResult(lon, lat, date_str)
+        if float(sun_anl) < 91.000000:
+            getTape5(sun_anl, date, factors, ele)
+            result = subprocess.run('Mod5.2.1.0.exe tap5', stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            # 检查命令是否成功执行
+            if result.returncode == 0:
+                print("命令成功执行")
+            else:
+                print(f"命令执行失败，返回码：{result.returncode}")
+                exit(result.returncode)
+            date_str = date.strftime('%Y_%m_%d') + "_" +str(hour)
+            geneResult(lon, lat, date_str)
 
 def readXlsx():
     # 加载Excel文件

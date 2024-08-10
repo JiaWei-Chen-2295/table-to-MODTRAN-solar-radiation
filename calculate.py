@@ -6,6 +6,8 @@
 
 import numpy as np
 from scipy.interpolate import UnivariateSpline
+from scipy.interpolate import interp1d
+from scipy.integrate import quad
 
 def extract_columns(file_path, start_line=922):
     second_column_data = []
@@ -18,10 +20,10 @@ def extract_columns(file_path, start_line=922):
         for line in file:
             values = line.strip().split()
 
-            if len(values) >= 15:
+            if len(values) >= 9:
                 try:
                     second_column = float(values[1])
-                    third_last_column = float(values[-3])
+                    third_last_column = float(values[3])
 
                     second_column_data.append(second_column)
                     third_last_column_data.append(third_last_column)
@@ -64,7 +66,7 @@ def save_data(path):
     for i in range(6, 20):
         second_column, third_last_column = extract_columns(fr'{path}_{i}.tp6', start_line=669)
         area = calculate_area(second_column, third_last_column)
-        area_chuli = area * 3.1415926 * 2 * 10000
+        area_chuli = area * 10000
         y2.append(area_chuli)
 
     return x2,y2
@@ -104,9 +106,9 @@ def getArea(path):
 if __name__ == '__main__':
 
     for i in range(6,20):
-        second_column, third_last_column = extract_columns(fr'D:\Study\20240807_14\110.995305_35.406978_2020_07_01_{i}.txt',start_line=669)
+        second_column, third_last_column = extract_columns(fr'C:\Users\35525\Desktop\20240810\20240810\110.995305_35.406978_2020_07_01_{i}.tp6',start_line=447)
         area = calculate_area(second_column, third_last_column)
-        area_chuli=area*3.1415926*2*10000
+        area_chuli=area*10000
         print('7 月 1 日第{}时'.format(i))
         print('x',second_column)
         print('y',third_last_column)
